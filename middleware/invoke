@@ -1,21 +1,6 @@
-#!/bin/bash
-# Shuttle It! nanoHUB launcher
-# This uses the nanoHUB Jupyter wrapper to open your notebook.
+#!/bin/sh
 
-set -euo pipefail
-
-# The nanoHUB runtime sets @tool to your shortname; leave it as-is in the command.
-# -t : open in tool window; -T @tool : tag the session with your tool
-# Replace the notebook path if yours lives elsewhere.
-NOTEBOOK_PATH="Shuttle It.ipynb"
-
-# Optional: ensure we’re in the repo root (middleware sits under top-level)
-cd "$(dirname "$0")/.."
-
-# If you rely on specific conda envs on nanoHUB, you can request one with -u.
-# (If unsure, omit -u; nanoHUB provides a default Anaconda.)
-# Examples you might see in other tools:  -u anaconda-2024  or  -u anaconda-6
-# If your tool needs nothing special, the next line is enough:
-exec /usr/bin/invoke_app "$@" \
-  -t @tool \
-  -C "start_jupyter -t -T @tool ${NOTEBOOK_PATH}"
+/usr/bin/invoke_app "$@" -t @tool \
+                         -C "start_jupyter -t -T @tool ShuttleIt.ipynb" \
+                         -w headless \
+                         -r none
