@@ -1,6 +1,6 @@
 #!/bin/sh
 
-/usr/bin/invoke_app "$@" -t @tool \
+/usr/bin/invoke_app "$@" -t shuttleit \
                          -C "start_jupyter -t -T @tool ShuttleIt.ipynb" \
                          -u anaconda-7 \
                          -w headless \
